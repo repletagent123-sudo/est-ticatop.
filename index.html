@@ -1,201 +1,13 @@
-    <style>
-        :root { 
-            --primary: #bfa0a0; /* Rose Gold Elegante */
-            --primary-dark: #9c7e7e;
-            --dark: #2c2c2c;
-            --light: #fdfdfd;
-            --gray: #f4f4f4;
-            --whatsapp: #25d366;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--light); color: var(--dark); font-family: 'Lato', sans-serif; line-height: 1.6; overflow-x: hidden; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--dark); }
-        img { max-width: 100%; display: block; object-fit: cover; }
-        a { text-decoration: none; transition: 0.3s ease; }
-
-        /* Header Sticky */
-        header { 
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-dark); letter-spacing: -0.5px; }
-        nav a { color: var(--dark); margin-left: 30px; font-weight: 400; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
-        nav a:hover { color: var(--primary); }
-
-        /* Hero Section com Imagem de Fundo */
-        .hero { 
-            padding: 120px 5% 100px; text-align: center; 
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=1920');
-            background-size: cover; background-position: center; color: white;
-        }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 20px; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .hero p { font-size: 1.3rem; max-width: 700px; margin: 0 auto 40px; font-weight: 300; opacity: 0.95; }
-        .btn-hero { 
-            display: inline-block; background: var(--primary); color: white; 
-            padding: 18px 50px; border-radius: 50px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
-        }
-        .btn-hero:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(191,160,160,0.4); }
-
-        /* Catálogo de Serviços */
-        .services { padding: 100px 5%; background: var(--gray); }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; margin-bottom: 15px; }
-        .section-title p { color: #666; font-size: 1.1rem; }
-        
-        .services-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; max-width: 1200px; margin: 0 auto;
-        }
-        
-        .service-card { 
-            background: white; border-radius: 15px; overflow: hidden; 
-            box-shadow: var(--shadow); transition: 0.4s ease; display: flex; flex-direction: column;
-        }
-        .service-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
-        .service-img { height: 220px; width: 100%; }
-        .service-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-        .service-content h3 { font-size: 1.5rem; margin-bottom: 10px; }
-        .price { color: var(--primary-dark); font-weight: 700; font-size: 1.3rem; margin-bottom: 15px; display: block; }
-        .service-desc { color: #666; font-size: 0.95rem; margin-bottom: 25px; flex-grow: 1; }
-        
-        .btn-service { 
-            display: block; width: 100%; padding: 15px; text-align: center; 
-            border: 2px solid var(--primary); color: var(--primary-dark); 
-            border-radius: 8px; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;
-        }
-        .btn-service:hover { background: var(--primary); color: white; }
-
-        /* Rodapé com Padding Extra Anti-Sobreposição */
-        footer { 
-            background: var(--dark); color: white; padding: 80px 5% 120px; 
-            text-align: center; margin-top: auto; 
-        }
-        footer a { color: var(--primary); font-weight: 700; font-size: 1.1rem; }
-        footer p { margin-top: 15px; opacity: 0.7; font-size: 0.9rem; }
-
-        /* Botão Flutuante Reposicionado e Seguro */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
-            background: var(--whatsapp); color: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 35px;
-            box-shadow: 0 6px 20px rgba(37,211,102,0.4); z-index: 9999;
-            animation: pulse 2s infinite;
-        }
-        .whatsapp-float:hover { transform: scale(1.1); background: #128c7e; }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; padding: 15px; }
-            nav a { margin: 0 10px; font-size: 0.8rem; }
-            .hero { padding: 80px 5% 60px; }
-            .services { padding: 60px 5%; }
-            .whatsapp-float { width: 55px; height: 55px; font-size: 28px; bottom: 20px; right: 20px; }
-            footer { padding-bottom: 100px; } /* Espaço extra garantido no mobile */
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo">Estética Conecta</div>
-        <nav>
-            <a href="#servicos">Procedimentos</a>
-            <a href="#sobre">A Clínica</a>
-            <a href="mailto:flaviojorrge@gmail.com">Contato</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>Beleza que Transforma</h1>
-        <p>Procedimentos estéticos avançados com atendimento humanizado. Agende sua avaliação diretamente pelo WhatsApp.</p>
-        <a href="https://wa.me/5511953429077?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação%20geral." class="btn-hero" target="_blank" rel="noopener noreferrer">Agendar Avaliação</a>
-    </section>
-
-    <section id="servicos" class="services">
-        <div class="section-title">
-            <h2>Nossos Procedimentos</h2>
-            <p>Escolha o tratamento ideal e agende instantaneamente</p>
-        </div>
-        
-        <div class="services-grid">
-            <!-- Serviço 1 -->
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=600" alt="Toxina Botulínica" class="service-img">
-                <div class="service-content">
-                    <h3>Toxina Botulínica</h3>
-                    <span class="price">A partir de R$ 890</span>
-                    <p class="service-desc">Suavize rugas e linhas de expressão com naturalidade. Duração de 4 a 6 meses.</p>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Toxina%20Botulínica." class="btn-service" target="_blank" rel="noopener noreferrer">Agendar Este Procedimento</a>
-                </div>
-            </div>
-
-            <!-- Serviço 2 -->
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&q=80&w=600" alt="Harmonização Facial" class="service-img">
-                <div class="service-content">
-                    <h3>Harmonização Facial</h3>
-                    <span class="price">A partir de R$ 1.800</span>
-                    <p class="service-desc">Equilíbrio e proporção facial com preenchedores de ácido hialurônico premium.</p>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Harmonização%20Facial." class="btn-service" target="_blank" rel="noopener noreferrer">Agendar Este Procedimento</a>
-                </div>
-            </div>
-
-            <!-- Serviço 3 -->
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600" alt="Limpeza de Pele" class="service-img">
-                <div class="service-content">
-                    <h3>Limpeza de Pele Profunda</h3>
-                    <span class="price">R$ 280</span>
-                    <p class="service-desc">Renovação celular, remoção de impurezas e hidratação intensa. Sessão de 90min.</p>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Limpeza%20de%20Pele." class="btn-service" target="_blank" rel="noopener noreferrer">Agendar Este Procedimento</a>
-                </div>
-            </div>
-
-            <!-- Serviço 4 -->
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1609188076876-c53451cf7d5e?auto=format&fit=crop&q=80&w=600" alt="Laser Remoção" class="service-img">
-                <div class="service-content">
-                    <h3>Laser para Manchas</h3>
-                    <span class="price">A partir de R$ 450/sessão</span>
-                    <p class="service-desc">Tecnologia avançada para tratar melasma, sardas e cicatrizes de acne.</p>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Laser%20para%20Manchas." class="btn-service" target="_blank" rel="noopener noreferrer">Agendar Este Procedimento</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>Dúvidas ou agendamento personalizado?</p>
-        <a href="mailto:flaviojorrge@gmail.com"><i class="fas fa-envelope"></i> flaviojorrge@gmail.com</a>
-        <p>&copy; 2026 Clínica Estética Conecta. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- Botão Flutuante Seguro (Não sobrepõe conteúdo nem rodapé) -->
-    <a href="https://wa.me/5511953429077?text=Olá!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação." 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       aria-label="Falar no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-</body>
-</html>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Estética Premium | Agendamento Online</title>
+    <title>Clínica Estética Conecta | Agendamento Online</title>
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { 
@@ -208,44 +20,37 @@
             --shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; scroll-behavior: smooth; }
         body { background: var(--light); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
         
-        /* Header Elegante */
+        /* Header */
         header { 
-            background: rgba(255,255,255,0.95); 
-            backdrop-filter: blur(10px);
-            padding: 20px 5%; 
-            display: flex; justify-content: space-between; align-items: center; 
-            position: sticky; top: 0; z-index: 100; 
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .logo { font-size: 1.8rem; font-weight: 300; letter-spacing: 2px; color: var(--dark); text-transform: uppercase; }
         .logo span { color: var(--rose); font-weight: 600; }
         nav a { text-decoration: none; color: var(--dark); margin-left: 30px; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase; }
         nav a:hover { color: var(--rose); }
 
-        /* Hero Section Premium */
+        /* Hero */
         .hero { 
-            min-height: 80vh; 
-            display: flex; align-items: center; justify-content: center; 
-            text-align: center; 
+            min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
-            padding: 0 5%;
-            color: white;
+            padding: 0 5%; color: white;
         }
         .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 300; margin-bottom: 20px; letter-spacing: -1px; }
         .hero p { font-size: 1.3rem; max-width: 600px; margin: 0 auto 40px; opacity: 0.9; font-weight: 300; }
         .btn-hero { 
-            display: inline-block; background: var(--rose); color: white; 
-            padding: 18px 50px; border-radius: 2px; text-decoration: none; 
-            font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; 
-            transition: all 0.4s ease; border: 1px solid var(--rose);
+            display: inline-block; background: var(--rose); color: white; padding: 18px 50px;
+            border-radius: 2px; text-decoration: none; font-size: 1rem; letter-spacing: 2px;
+            text-transform: uppercase; transition: all 0.4s ease; border: 1px solid var(--rose);
         }
         .btn-hero:hover { background: transparent; color: white; border-color: white; }
 
-        /* Serviços Grid */
-        .services { padding: 100px 5%; max-width: 1200px; margin: 0 auto; }
+        /* Serviços */
+        .services { padding: 100px 5% 120px; max-width: 1200px; margin: 0 auto; }
         .section-title { text-align: center; margin-bottom: 60px; }
         .section-title h2 { font-size: 2.5rem; font-weight: 300; color: var(--dark); margin-bottom: 15px; }
         .section-title p { color: var(--rose); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; }
@@ -254,9 +59,8 @@
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; 
         }
         .service-card { 
-            background: var(--white); border-radius: 4px; overflow: hidden; 
-            box-shadow: var(--shadow); transition: transform 0.4s ease;
-            display: flex; flex-direction: column;
+            background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: var(--shadow); 
+            transition: transform 0.4s ease; display: flex; flex-direction: column;
         }
         .service-card:hover { transform: translateY(-10px); }
         .service-img { height: 250px; width: 100%; object-fit: cover; }
@@ -265,48 +69,51 @@
         .service-content p { font-size: 0.9rem; color: #666; margin-bottom: 20px; flex-grow: 1; }
         .price { font-size: 1.5rem; color: var(--rose); font-weight: 600; margin-bottom: 20px; display: block; }
         .btn-agendar { 
-            display: block; width: 100%; padding: 15px; 
-            background: transparent; border: 1px solid var(--dark); 
-            color: var(--dark); text-align: center; text-decoration: none; 
-            text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
-            transition: all 0.3s ease; margin-top: auto;
+            display: block; width: 100%; padding: 15px; background: transparent; border: 1px solid var(--dark);
+            color: var(--dark); text-align: center; text-decoration: none; text-transform: uppercase;
+            letter-spacing: 1px; font-size: 0.8rem; transition: all 0.3s ease; margin-top: auto;
         }
         .btn-agendar:hover { background: var(--dark); color: white; }
 
-        /* Rodapé Minimalista */
-        footer { background: var(--dark); color: white; padding: 60px 5%; text-align: center; margin-top: 100px; }
+        /* Rodapé */
+        footer { background: var(--dark); color: white; padding: 60px 5% 40px; text-align: center; }
         footer .email-link { 
-            color: var(--rose); text-decoration: none; font-size: 1.2rem; 
-            display: inline-flex; align-items: center; gap: 10px; margin: 20px 0;
-            transition: 0.3s;
+            color: var(--rose); text-decoration: none; font-size: 1.2rem; display: inline-flex; 
+            align-items: center; gap: 10px; margin: 20px 0; transition: 0.3s;
         }
         footer .email-link:hover { color: white; }
         footer p { opacity: 0.5; font-size: 0.8rem; margin-top: 30px; }
 
-        /* Botão Flutuante WhatsApp (POSICIONAMENTO CORRIGIDO) */
+        /* Botão Flutuante (Correção: maior touch target + sem sobreposição) */
         .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
             background: var(--whatsapp); color: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 32px;
-            box-shadow: 0 4px 20px rgba(37,211,102,0.4); z-index: 999;
+            display: flex; align-items: center; justify-content: center; font-size: 34px;
+            box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999;
             text-decoration: none; transition: all 0.3s ease;
             animation: pulse-green 2s infinite;
         }
-        .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); background: #128c7e; }
-        @keyframes pulse-green {
-            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(37,211,102,0); }
-            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
-        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(10deg); background: #128c7e; }
 
-        /* Mobile Optimization */
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
             header { padding: 15px; }
             .logo { font-size: 1.4rem; }
-            nav { display: none; } /* Simplificado para mobile - foco no CTA */
-            .hero h1 { font-size: 2.5rem; }
-            .services { padding: 60px 5%; }
-            .whatsapp-float { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 28px; }
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1.1rem; }
+            .services { padding: 60px 5% 100px; } /* Mais espaço inferior no mobile */
+            .service-card { padding-bottom: 20px; }
+            .service-content { padding: 25px 20px; }
+            .btn-agendar { padding: 14px; font-size: 0.85rem; }
+            .whatsapp-float { 
+                bottom: 25px; right: 25px; width: 60px; height: 60px; font-size: 30px;
+            }
+        }
+
+        /* Correção ortográfica e última imagem */
+        .service-card:nth-child(4) .service-img {
+            background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600') center/cover no-repeat;
         }
     </style>
 </head>
@@ -375,9 +182,9 @@
                 </div>
             </div>
 
-            <!-- Serviço 4 -->
+            <!-- Serviço 4 (corrigido) -->
             <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1609188076876-c33da35f0b04?auto=format&fit=crop&q=80&w=600" alt="Laser Remoção" class="service-img">
+                <div class="service-img" style="background: url('https://images.unsplash.com/photo-1609188076876-c33da35f0b04') center/cover no-repeat; height: 250px;"></div>
                 <div class="service-content">
                     <h3>Laser Rejuvenescedor</h3>
                     <p>Tratamento de manchas, cicatrizes e estímulo de colágeno não invasivo.</p>
@@ -397,7 +204,7 @@
         <p>&copy; 2026 Clínica Estética Conecta. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- BOTÃO FLUTUANTE WHATSAPP (ISOLADO E FUNCIONAL) -->
+    <!-- Botão Flutuante WhatsApp -->
     <a href="https://wa.me/5511953429077?text=Olá!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação." 
        class="whatsapp-float" 
        target="_blank" 
@@ -408,3 +215,6 @@
 
 </body>
 </html>
+
+
+
