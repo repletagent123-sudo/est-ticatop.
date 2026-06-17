@@ -3,218 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Estética Conecta | Agendamento Online</title>
-    <!-- Google Fonts Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Espaço de Eventos Premium | Luxo e Sofisticação</title>
     <style>
-        :root { 
-            --rose: #bfa0a0; 
-            --rose-dark: #9c7e7e; 
-            --dark: #2d2d2d; 
-            --light: #fdfbfb; 
-            --white: #ffffff;
-            --whatsapp: #25d366;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        :root {
+            --bg-pure: #050507;
+            --bg-gradient: linear-gradient(180deg, #09090b 0%, #030303 100%);
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --glass-border-hover: rgba(212, 175, 55, 0.4);
+            
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.2);
+            --white: #F5F5F7;
+            --muted: #8E8E93;
+            
+            --whatsapp: #25D366;
+            --whatsapp-hover: #20BA5A;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', -apple-system, sans-serif; scroll-behavior: smooth; }
-        body { background: var(--light); color: var(--dark); line-height: 1.6; overflow-x: hidden; }
-        
-        /* Header */
-        header { 
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .logo { font-size: 1.8rem; font-weight: 300; letter-spacing: 2px; color: var(--dark); text-transform: uppercase; }
-        .logo span { color: var(--rose); font-weight: 600; }
-        nav a { text-decoration: none; color: var(--dark); margin-left: 30px; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase; }
-        nav a:hover { color: var(--rose); }
 
-        /* Hero */
-        .hero { 
-            min-height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=1920') center/cover no-repeat;
-            padding: 0 5%; color: white;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
         }
-        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 300; margin-bottom: 20px; letter-spacing: -1px; }
-        .hero p { font-size: 1.3rem; max-width: 600px; margin: 0 auto 40px; opacity: 0.9; font-weight: 300; }
-        .btn-hero { 
-            display: inline-block; background: var(--rose); color: white; padding: 18px 50px;
-            border-radius: 2px; text-decoration: none; font-size: 1rem; letter-spacing: 2px;
-            text-transform: uppercase; transition: all 0.4s ease; border: 1px solid var(--rose);
-        }
-        .btn-hero:hover { background: transparent; color: white; border-color: white; }
 
-        /* Serviços */
-        .services { padding: 100px 5% 120px; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.5rem; font-weight: 300; color: var(--dark); margin-bottom: 15px; }
-        .section-title p { color: var(--rose); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; }
-        
-        .services-grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; 
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-pure);
         }
-        .service-card { 
-            background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: var(--shadow); 
-            transition: transform 0.4s ease; display: flex; flex-direction: column;
-        }
-        .service-card:hover { transform: translateY(-10px); }
-        .service-img { height: 250px; width: 100%; object-fit: cover; }
-        .service-content { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-        .service-content h3 { font-size: 1.4rem; font-weight: 400; margin-bottom: 10px; color: var(--dark); }
-        .service-content p { font-size: 0.9rem; color: #666; margin-bottom: 20px; flex-grow: 1; }
-        .price { font-size: 1.5rem; color: var(--rose); font-weight: 600; margin-bottom: 20px; display: block; }
-        .btn-agendar { 
-            display: block; width: 100%; padding: 15px; background: transparent; border: 1px solid var(--dark);
-            color: var(--dark); text-align: center; text-decoration: none; text-transform: uppercase;
-            letter-spacing: 1px; font-size: 0.8rem; transition: all 0.3s ease; margin-top: auto;
-        }
-        .btn-agendar:hover { background: var(--dark); color: white; }
 
-        /* Rodapé */
-        footer { background: var(--dark); color: white; padding: 60px 5% 40px; text-align: center; }
-        footer .email-link { 
-            color: var(--rose); text-decoration: none; font-size: 1.2rem; display: inline-flex; 
-            align-items: center; gap: 10px; margin: 20px 0; transition: 0.3s;
+        body {
+            background: var(--bg-gradient);
+            color: var(--white);
+            line-height: 1.6;
+            position: relative;
         }
-        footer .email-link:hover { color: white; }
-        footer p { opacity: 0.5; font-size: 0.8rem; margin-top: 30px; }
 
-        /* Botão Flutuante (Correção: maior touch target + sem sobreposição) */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
-            background: var(--whatsapp); color: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 34px;
-            box-shadow: 0 6px 25px rgba(37,211,102,0.4); z-index: 999;
-            text-decoration: none; transition: all 0.3s ease;
-            animation: pulse-green 2s infinite;
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px;
+            overflow: hidden;
         }
-        .whatsapp-float:hover { transform: scale(1.15) rotate(10deg); background: #128c7e; }
 
-        /* Mobile Optimizations */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: var(--gold);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #FFF 30%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 48px auto;
+        }
+
+        /* Botões */
+        .btn-premium {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            background-color: var(--whatsapp);
+            color: white;
+            padding: 18px 42px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-premium:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.5);
+            background-color: var(--whatsapp-hover);
+        }
+
+        /* Botão Flutuante */
+        .btn-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 64px;
+            height: 64px;
+            background-color: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-floating:hover {
+            transform: scale(1.1) translateY(-5px);
+            background-color: var(--whatsapp-hover);
+        }
+
+        .btn-floating svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Faixa de Métricas */
+        .metrics-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            max-width: 1140px;
+            margin: -60px auto 100px auto;
+            padding: 32px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            text-align: center;
+        }
+
+        .metric-item h3 {
+            font-size: 1.8rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .metric-item p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        /* Seção de Diferenciais */
+        .features {
+            padding: 40px 24px 100px 24px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            color: var(--muted);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 48px 40px;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--glass-border-hover);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 12px;
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 28px;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        /* Seção FAQ */
+        .faq-section {
+            padding: 100px 24px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        details {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        details[open] {
+            border-color: var(--glass-border-hover);
+        }
+
+        summary {
+            padding: 24px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            outline: none;
+        }
+
+        summary::after {
+            content: '+';
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+
+        details[open] summary::after {
+            content: '−';
+        }
+
+        .faq-content {
+            padding: 0 24px 24px 24px;
+            color: var(--muted);
+        }
+
+        /* CTA Final */
+        .cta-block {
+            padding: 120px 24px;
+            text-align: center;
+        }
+
+        .cta-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12) 0%, rgba(255,255,255,0.01) 80%);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+        }
+
+        .cta-card h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            margin-bottom: 16px;
+        }
+
+        .cta-card p {
+            color: var(--muted);
+            margin-bottom: 40px;
+        }
+
+        footer {
+            padding: 48px 24px;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
         @media (max-width: 768px) {
-            header { padding: 15px; }
-            .logo { font-size: 1.4rem; }
-            nav { display: none; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero p { font-size: 1.1rem; }
-            .services { padding: 60px 5% 100px; } /* Mais espaço inferior no mobile */
-            .service-card { padding-bottom: 20px; }
-            .service-content { padding: 25px 20px; }
-            .btn-agendar { padding: 14px; font-size: 0.85rem; }
-            .whatsapp-float { 
-                bottom: 25px; right: 25px; width: 60px; height: 60px; font-size: 30px;
-            }
-        }
-
-        /* Correção ortográfica e última imagem */
-        .service-card:nth-child(4) .service-img {
-            background: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600') center/cover no-repeat;
+            .metrics-bar { margin: -40px 20px 60px 20px; padding: 24px; }
+            .cta-card { padding: 48px 24px; }
+            .btn-floating { bottom: 20px; right: 20px; width: 56px; height: 56px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">Estética <span>Conecta</span></div>
-        <nav>
-            <a href="#servicos">Procedimentos</a>
-            <a href="#sobre">A Clínica</a>
-            <a href="mailto:flaviojorrge@gmail.com">Contato</a>
-        </nav>
-    </header>
+    <a href="https://wa.me/5511953429077?text=Olá!%20Estou%20navegando%20pelo%20site%20e%20gostaria de%20mais%20informações%20sobre%20as%20datas." class="btn-floating" target="_blank" aria-label="Contato via WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.421 1.451 5.535 0 10.041-4.484 10.045-9.982.002-2.664-1.033-5.166-2.915-7.05C17.32 1.687 14.823.65 12.181.65c-5.541 0-10.048 4.484-10.052 9.984-.001 1.93.504 3.812 1.464 5.418L2.616 21.31l4.031-1.056z"/></svg>
+    </a>
 
     <section class="hero">
-        <div>
-            <h1>Beleza que Transforma</h1>
-            <p>Procedimentos estéticos personalizados com tecnologia avançada e atendimento humanizado.</p>
-            <a href="https://wa.me/5511953429077?text=Olá!%20Gostaria%20de%20agendar%20uma%20avaliação%20personalizada." 
-               class="btn-hero" target="_blank" rel="noopener noreferrer">
-                Agendar Avaliação
+        <div class="hero-content">
+            <span class="badge">Experiência Exclusiva</span>
+            <h1>O Cenário Perfeito para Seus <span>Momentos Inesquecíveis</span></h1>
+            <p>Infraestrutura de altíssimo padrão, sofisticação arquitetônica e suporte operacional completo para casamentos e eventos sociais de luxo.</p>
+            
+            <a href="https://wa.me/5511953429077?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento%20para%20o%20espaço%20de%20eventos." class="btn-premium" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.421 1.451 5.535 0 10.041-4.484 10.045-9.982.002-2.664-1.033-5.166-2.915-7.05C17.32 1.687 14.823.65 12.181.65c-5.541 0-10.048 4.484-10.052 9.984-.001 1.93.504 3.812 1.464 5.418L2.616 21.31l4.031-1.056z"/></svg>
+                Agendar Visita Exclusiva
             </a>
         </div>
     </section>
 
-    <section id="servicos" class="services">
-        <div class="section-title">
-            <p>Nossos Procedimentos</p>
-            <h2>Serviços & Investimentos</h2>
+    <div class="metrics-bar">
+        <div class="metric-item">
+            <h3>500</h3>
+            <p>Convidados</p>
+        </div>
+        <div class="metric-item">
+            <h3>100%</h3>
+            <p>Climatizado</p>
+        </div>
+        <div class="metric-item">
+            <h3>VIP</h3>
+            <p>Camarim Privativo</p>
+        </div>
+        <div class="metric-item">
+            <h3>Próprio</h3>
+            <p>Gerador Integrado</p>
+        </div>
+    </div>
+
+    <section class="features">
+        <div class="section-header">
+            <h2>Diferenciais do Nosso Espaço</h2>
+            <p>Planejado detalhe por detalhe para superar as maiores expectativas</p>
         </div>
         
-        <div class="services-grid">
-            <!-- Serviço 1 -->
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&q=80&w=600" alt="Toxina Botulínica" class="service-img">
-                <div class="service-content">
-                    <h3>Toxina Botulínica</h3>
-                    <p>Suavização de rugas dinâmicas e prevenção do envelhecimento facial.</p>
-                    <span class="price">A partir de R$ 890</span>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Toxina%20Botulínica." 
-                       class="btn-agendar" target="_blank" rel="noopener noreferrer">Agendar Agora</a>
-                </div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">01</div>
+                <h3>Arquitetura Contemporânea</h3>
+                <p>Salão monumental com pé-direito duplo, sistemas de iluminação cênica inteligente e acabamentos refinados que valorizam qualquer estilo de decoração.</p>
             </div>
-
-            <!-- Serviço 2 -->
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&q=80&w=600" alt="Limpeza de Pele" class="service-img">
-                <div class="service-content">
-                    <h3>Limpeza de Pele Profunda</h3>
-                    <p>Renovação celular completa com extração segura e hidratação intensiva.</p>
-                    <span class="price">R$ 280</span>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Limpeza%20de%20Pele." 
-                       class="btn-agendar" target="_blank" rel="noopener noreferrer">Agendar Agora</a>
-                </div>
+            <div class="card">
+                <div class="card-icon">02</div>
+                <h3>Gastronomia Estruturada</h3>
+                <p>Cozinha industrial de última geração perfeitamente equipada para atender os melhores buffets e banquetes com máxima agilidade e segurança.</p>
             </div>
-
-            <!-- Serviço 3 -->
-            <div class="service-card">
-                <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&q=80&w=600" alt="Harmonização Facial" class="service-img">
-                <div class="service-content">
-                    <h3>Harmonização Facial</h3>
-                    <p>Preenchimento estratégico para equilíbrio e proporção dos traços faciais.</p>
-                    <span class="price">A partir de R$ 1.200</span>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Harmonização%20Facial." 
-                       class="btn-agendar" target="_blank" rel="noopener noreferrer">Agendar Agora</a>
-                </div>
-            </div>
-
-            <!-- Serviço 4 (corrigido) -->
-            <div class="service-card">
-                <div class="service-img" style="background: url('https://images.unsplash.com/photo-1609188076876-c33da35f0b04') center/cover no-repeat; height: 250px;"></div>
-                <div class="service-content">
-                    <h3>Laser Rejuvenescedor</h3>
-                    <p>Tratamento de manchas, cicatrizes e estímulo de colágeno não invasivo.</p>
-                    <span class="price">A partir de R$ 450</span>
-                    <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20agendar%20Laser%20Rejuvenescedor." 
-                       class="btn-agendar" target="_blank" rel="noopener noreferrer">Agendar Agora</a>
-                </div>
+            <div class="card">
+                <div class="card-icon">03</div>
+                <h3>Logística Segura</h3>
+                <p>Estacionamento privativo amplo, área dedicada para serviço de valet, acessibilidade arquitetônica total e monitoramento interno profissional.</p>
             </div>
         </div>
     </section>
 
-    <footer>
-        <p>Dúvidas ou agendamento personalizado?</p>
-        <a href="mailto:flaviojorrge@gmail.com" class="email-link">
-            <i class="fas fa-envelope"></i> flaviojorrge@gmail.com
-        </a>
-        <p>&copy; 2026 Clínica Estética Conecta. Todos os direitos reservados.</p>
-    </footer>
+    <section class="faq-section">
+        <div class="section-header">
+            <h2>Dúvidas Frequentes</h2>
+            <p>Respostas rápidas sobre o funcionamento do nosso espaço</p>
+        </div>
+        
+        <div class="faq-container">
+            <details>
+                <summary>O espaço possui gerador de energia?</summary>
+                <div class="faq-content">
+                    Sim, contamos com um gerador próprio de alta capacidade que suporta 100% da iluminação, som e climatização do evento em caso de instabilidade na rede externa.
+                </div>
+            </details>
+            <details>
+                <summary>Qual a capacidade máxima do salão?</summary>
+                <div class="faq-content">
+                    Nosso espaço acomoda confortavelmente até 500 convidados em formato de banquete (mesas postas) ou até 700 pessoas em formato de coquetel.
+                </div>
+            </details>
+            <details>
+                <summary>Vocês trabalham com buffet exclusivo?</summary>
+                <div class="faq-content">
+                    Não exigimos exclusividade. Deixamos você livre para trazer o buffet de sua preferência, fornecendo uma cozinha industrial completa para o trabalho da equipe contratada.
+                </div>
+            </details>
+        </div>
+    </section>
 
-    <!-- Botão Flutuante WhatsApp -->
-    <a href="https://wa.me/5511953429077?text=Olá!%20Vi%20o%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação." 
-       class="whatsapp-float" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       aria-label="Falar no WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <section class="cta-block">
+        <div class="cta-card">
+            <h2>Garanta a Data Perfeita para o Seu Evento</h2>
+            <p>As datas de reservas para este ano estão concorridas. Converse agora com nossa equipe de atendimento corporativo.</p>
+            <a href="https://wa.me/5511953429077?text=Olá!%20Quero%20consultar%20a%20agenda%20de%20datas%20disponíveis%20para%20este%20ano." class="btn-premium" target="_blank">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.488 1.449 5.421 1.451 5.535 0 10.041-4.484 10.045-9.982.002-2.664-1.033-5.166-2.915-7.05C17.32 1.687 14.823.65 12.181.65c-5.541 0-10.048 4.484-10.052 9.984-.001 1.93.504 3.812 1.464 5.418L2.616 21.31l4.031-1.056z"/></svg>
+                Consultar Agenda de Datas
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Espaço de Eventos Premium. Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
-
-
-
